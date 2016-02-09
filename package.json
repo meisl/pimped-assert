@@ -1,0 +1,16 @@
+{
+  "name": "pimped-assert",
+  "version": "0.0.1",
+  "description": "Pimp Node.js' 'assert' a tiny bit, eg by adding a 'refute'",
+  "main": "./lib/pimped-node-assert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test",
+    "assert",
+    "refute",
+  ],
+  "author": "meisl",
+  "license": "ISC"
+}
