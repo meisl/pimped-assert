@@ -5,10 +5,28 @@ var pa     = require('../lib/pimped-assert'),
     refute = pa.refute;
 
 
-ASSERT.equal(typeof pa, "object", 'pimped-assert exports an object');
-ASSERT.equal(typeof assert, "function", 'pimped-assert.assert is a function');
-ASSERT.equal(typeof refute, "function", 'pimped-assert.refute is a function');
+ASSERT.strictEqual(typeof pa, "object", 'pimped-assert exports an object');
+ASSERT.strictEqual(typeof assert, "function", 'assert is a function');
+ASSERT.strictEqual(typeof refute, "function", 'refute is a function');
 
+
+// verbs from the orginal 'assert'
+
+[   ['equal',           'notEqual'      ],
+    ['strictEqual',     'notStrictEqual'],
+    ['deepEqual',       'notDeepEqual'],
+    ['deepStrictEqual', 'notDeepStrictEqual'],
+    ['throws',          'doesNotThrow'],
+].forEach(verbPair => {
+    var verb = verbPair[0],
+        neg  = verbPair[1];
+    ASSERT.strictEqual(assert[verb], ASSERT[verb], "pimped-assert.assert re-exposes assert's ." + verb);
+    ASSERT.strictEqual(refute[verb], ASSERT[neg],  "pimped-assert.refute re-exposes assert's ." + neg + " as refute." + verb);
+});
+
+
+
+// additional verbs:
 
 assert.same(0, 0);
 assert.same(NaN, NaN);
