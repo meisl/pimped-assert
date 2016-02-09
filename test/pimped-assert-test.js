@@ -10,7 +10,7 @@ ASSERT.strictEqual(typeof assert, "function", 'assert is a function');
 ASSERT.strictEqual(typeof refute, "function", 'refute is a function');
 
 
-// verbs from the orginal 'assert'
+/******** re-exposed verbs from the orginal 'assert' *************************/
 
 [   ['equal',           'notEqual'      ],
     ['strictEqual',     'notStrictEqual'],
@@ -26,7 +26,33 @@ ASSERT.strictEqual(typeof refute, "function", 'refute is a function');
 
 
 
-// additional verbs:
+/******** additional verbs ***************************************************/
+
+//******* verb .typeof
+ASSERT.strictEqual(typeof assert.typeof, "function", 'assert.typeof is a function');
+ASSERT.strictEqual(typeof refute.typeof, "function", 'refute.typeof is a function');
+
+assert.typeof(assert.typeof, "function", "assert.typeof");
+assert.typeof(refute.typeof, "function", "refute.typeof");
+
+() => {
+    const f = () => undefined;
+    assert.typeof(f, "function", "assert.typeof(" + f.toString + ", 'function') should pass");
+    ASSERT.throws(() => { refute.typeof(f, "function") }, /AssertionError/, "assert.typeof(" + f.toString + ", 'function' should fail");
+
+    assert.typeof('',       "string",  "assert.typeof('',       'string') should pass");
+    assert.typeof(0,        "number",  "assert.typeof(0,        'number') should pass");
+    assert.typeof(NaN,      "number",  "assert.typeof(NaN,      'number') should pass");
+    assert.typeof(Infinity, "number",  "assert.typeof(Infinity, 'number') should pass");
+    assert.typeof(true,     "boolean", "assert.typeof(true,     'boolean') should pass");
+    assert.typeof(false,    "boolean", "assert.typeof(false,    'boolean') should pass");
+    // TODO: regex
+    assert.typeof({ },      "object",  "assert.typeof({ },      'object') should pass");
+
+    // TODO: refutes
+}();
+
+//******* verb .same
 
 assert.same(0, 0);
 assert.same(NaN, NaN);
