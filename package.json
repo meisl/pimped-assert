@@ -2,15 +2,22 @@
   "name": "pimped-assert",
   "version": "0.0.1",
   "description": "Pimp Node.js' 'assert' a tiny bit, eg by adding a 'refute'",
-  "main": "./lib/pimped-node-assert.js",
+  "main": "./lib/pimped-assert.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "test",
     "assert",
-    "refute",
+    "refute"
   ],
   "author": "meisl",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meisl/pimped-assert.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meisl/pimped-assert/issues"
+  }
 }
